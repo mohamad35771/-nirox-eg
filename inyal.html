@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nirox Store | نيروكس ستور 💎</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #0a192f; 
+            --primary-blue: #1d4ed8; 
+            --white: #ffffff;
+            --wa-color: #25d366;
+            --discord-color: #5865f2;
+            --fb-color: #1877f2;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; font-family: 'Segoe UI', Tahoma, sans-serif; }
+
+        body { background: var(--dark-blue); margin: 0; padding: 0; overflow-x: hidden; color: #333; }
+
+        /* انيميشن الاهتزاز القوي */
+        @keyframes strongShake {
+            0% { transform: rotate(0deg) scale(1); }
+            20% { transform: rotate(5deg) scale(1.1); }
+            40% { transform: rotate(-5deg) scale(1.1); }
+            60% { transform: rotate(3deg) scale(1.1); }
+            80% { transform: rotate(-3deg) scale(1.1); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+        
+        .shake:hover, .shake:active {
+            animation: strongShake 0.5s ease-in-out;
+        }
+
+        .support-fixed {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--primary-blue); width: 60px; height: 60px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            color: white; font-size: 28px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index: 9999;
+        }
+
+        .screen { display: none; padding: 20px; max-width: 480px; margin: 0 auto; min-height: 100vh; }
+        .screen.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .glass-box { background: var(--white); border-radius: 30px; padding: 25px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+
+        .input-style { width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 2px solid #eee; outline: none; font-size: 16px; text-align: center; }
+        .input-style:focus { border-color: var(--primary-blue); }
+
+        .btn-blue { background: var(--primary-blue); color: white; border: none; padding: 16px; border-radius: 15px; width: 100%; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+        .btn-blue:active { transform: scale(0.95); }
+        
+        .game-card { background: #f8fafc; padding: 15px; border-radius: 20px; margin: 12px 0; display: flex; align-items: center; justify-content: space-between; border: 1px solid #e2e8f0; cursor: pointer; }
+
+        .price-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+        .price-card { background: #fff; border: 2px solid #eee; padding: 15px; border-radius: 18px; text-align: center; cursor: pointer; }
+        .price-card b { display: block; color: var(--primary-blue); font-size: 19px; margin-top: 5px; }
+
+        .star-rating { font-size: 30px; color: #ddd; margin: 15px 0; cursor: pointer; }
+        .star-rating .active { color: #facc15; }
+
+        .footer-nav { margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
+        .footer-nav a { display: block; margin: 8px 0; text-decoration: none; font-weight: bold; transition: 0.2s; }
+        .footer-nav a:active { transform: scale(0.95); }
+        
+        .back-btn { background: none; border: none; color: #666; cursor: pointer; font-size: 14px; margin-top: 15px; text-decoration: underline; display: inline-block; }
+        
+        .status-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; display: inline-block; margin-left: 5px; box-shadow: 0 0 8px #22c55e; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<a href="https://wa.me/201022846899" class="support-fixed shake"><i class="fas fa-headset"></i></a>
+
+<div id="step1" class="screen active">
+    <div style="height: 90vh; display: flex; align-items: center;">
+        <div class="glass-box" style="width:100%">
+            <h1 style="color:var(--primary-blue); font-size:4rem; margin:0; font-weight: 900; letter-spacing: -1px;">NIROX</h1>
+            <h2 style="color:#475569; font-size:1.8rem; margin-top:-10px; font-weight: 700;">نـيـروكـس سـتـور</h2>
+            <p style="color:#666; margin-top: 10px;">أسرع شحن.. لأقوى جيمر ⚡</p>
+            <button class="btn-blue shake" onclick="nav('step2')">ابدأ الشحن | Start Now</button>
+        </div>
+    </div>
+</div>
+
+<div id="step2" class="screen">
+    <div class="glass-box">
+        <h3>سجل اسمك 👤 | Enter Name</h3>
+        <input type="text" id="u-name" class="input-style" placeholder="اكتب اسمك أو لقبك هنا">
+        <button class="btn-blue shake" onclick="saveU()">دخول | Login</button>
+        <button class="back-btn" onclick="nav('step1')">رجوع | Back</button>
+    </div>
+</div>
+
+<div id="step3" class="screen">
+    <div class="glass-box">
+        <div style="margin-bottom: 15px;"><span class="status-dot"></span> <span style="font-size: 12px; font-weight: bold; color:#22c55e;">المتجر متصل الآن | Online</span></div>
+        <h3>أهلاً بك في <span style="color:var(--primary-blue)">NIROX</span>، <span id="user-span"></span></h3>
+        <button class="btn-blue shake" onclick="nav('step4')">🔍 بحث عن لعبة | Search Game</button>
+        
+        <div class="footer-nav">
+            <a href="https://www.facebook.com/share/18HiFZGoNM/" style="color:var(--fb-color)"><i class="fab fa-facebook"></i> صفحة الفيسبوك (Facebook)</a>
+            <a href="https://whatsapp.com/channel/0029VbBxg3y7Noa9D8wn4e0b" style="color:var(--wa-color)"><i class="fab fa-whatsapp"></i> قناتنا الرسمية (WhatsApp)</a>
+            <a href="https://discord.gg/pJR8yTZNF" style="color:var(--discord-color)"><i class="fab fa-discord"></i> مجتمع الديسكورد (Discord)</a>
+        </div>
+        <button class="back-btn" onclick="nav('step2')">تغيير الاسم</button>
+    </div>
+</div>
+
+<div id="step4" class="screen">
+    <div class="glass-box">
+        <input type="text" id="s-input" class="input-style" placeholder="موجود ببجي وفري فاير وبلود سترايك" onkeyup="doSearch()">
+        <div id="res-pubg" class="game-card shake" onclick="goID('pubg')"><span>ببجي | PUBG</span><img src="https://i.ibb.co/XfCPkR80/pubg.png" width="45"></div>
+        <div id="res-ff" class="game-card shake" onclick="goID('ff')"><span>فري فاير | Free Fire</span><img src="https://i.ibb.co/wFvvT85K/ff.png" width="45"></div>
+        <div id="res-blood" class="game-card shake" onclick="goID('blood')"><span>بلود سترايك | Blood Strike</span><img src="https://i.ibb.co/hRqcg6kc/blood.png" width="45"></div>
+        <button class="back-btn" onclick="nav('step3')">رجوع</button>
+    </div>
+</div>
+
+<div id="step5" class="screen">
+    <div class="glass-box">
+        <h3 id="g-label" style="color:var(--primary-blue)"></h3>
+        <input type="text" id="p-nick" class="input-style" placeholder="الاسم في اللعبة (NickName)">
+        <input type="number" id="p-id" class="input-style" placeholder="ID اللاعب">
+        <button class="btn-blue shake" onclick="confirmID()">عرض الأسعار | Show Prices</button>
+        <button class="back-btn" onclick="clearAndBack()">رجوع</button>
+    </div>
+</div>
+
+<div id="step6" class="screen">
+    <div class="glass-box">
+        <h3 id="p-title" style="color:var(--primary-blue)"></h3>
+        <div id="p-cont" class="price-grid"></div>
+        <button class="back-btn" onclick="nav('step5')">تعديل البيانات</button>
+    </div>
+</div>
+
+<div id="step7" class="screen">
+    <div class="glass-box">
+        <h2 style="color:var(--wa-color)">تم تسجيل الطلب بنجاح ✅</h2>
+        <div style="background:#f8fafc; padding:15px; border-radius:15px; margin:15px 0; text-align:right;">
+            <p>العميل: <b id="f-user"></b></p>
+            <p>الآيدي (ID): <b id="f-id" style="color:var(--primary-blue)"></b></p>
+        </div>
+        <p style="font-size:13px; color:red; font-weight:bold;">تنبيه: يرجى تأكيد الطلب عبر الواتساب</p>
+        
+        <button class="btn-blue shake" style="background:var(--wa-color)" onclick="send('201022846899')">تأكيد واتساب 1</button>
+        <button class="btn-blue shake" style="background:#128c7e" onclick="send('201210224775')">تأكيد واتساب 2</button>
+        
+        <button class="back-btn" onclick="nav('step6')" style="margin-top: 20px; color: var(--primary-blue); font-weight: bold;">← رجوع لتعديل الطلب</button>
+
+        <div style="margin-top:30px; border-top:2px dashed #eee; padding-top:20px;">
+            <h4>قيم تجربتك مع NIROX ⭐</h4>
+            <div class="star-rating" id="stars">
+                <i class="fas fa-star" onclick="setStar(1)"></i><i class="fas fa-star" onclick="setStar(2)"></i><i class="fas fa-star" onclick="setStar(3)"></i><i class="fas fa-star" onclick="setStar(4)"></i><i class="fas fa-star" onclick="setStar(5)"></i>
+            </div>
+            <textarea id="rate-text" class="input-style" placeholder="اكتب رأيك هنا..."></textarea>
+            <button class="btn-blue shake" style="background:#555;" onclick="sendRate()">إرسال التقييم</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const db = {
+        pubg: { n: "شدات ببجي | PUBG UC", u: "UC", p: [[30,30],[60,50],[120,100],[180,150],[210,180],[240,200],[325,245],[385,295],[415,325],[445,345],[505,395],[660,455],[720,500],[840,600],[985,695],[1040,745],[1320,900],[1500,1050],[1800,1125],[2125,1365],[2460,1580],[3120,2030],[3850,2250],[4175,2475],[4500,2700],[5650,3375],[8100,4500],[16200,9000],[24300,13500],[32400,18000]] },
+        ff: { n: "جواهر فري فاير | Free Fire", u: "💎", p: [[50,30],[100,60],[210,115],[310,170],[520,275],[1060,530],[2200,1050]] },
+        blood: { n: "كوينز بلود سترايك | Blood Strike", u: "🪙", p: [[50,25],[105,50],[155,75],[210,100],[320,140],[540,230],[1100,470],[2260,920],[4520,1840],[5800,2260]] }
+    };
+
+    let cart = { stars: 5 };
+
+    function nav(id) {
+        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function saveU() {
+        cart.u = document.getElementById('u-name').value;
+        if(!cart.u) return alert("يرجى إدخال الاسم | Please enter name");
+        document.getElementById('user-span').innerText = cart.u;
+        nav('step3');
+    }
+
+    function doSearch() {
+        const q = document.getElementById('s-input').value.toLowerCase();
+        document.getElementById('res-pubg').style.display = (q.includes('ببجي') || q.includes('pu')) ? 'flex' : 'none';
+        document.getElementById('res-ff').style.display = (q.includes('فري') || q.includes('ff')) ? 'flex' : 'none';
+        document.getElementById('res-blood').style.display = (q.includes('بلود') || q.includes('bl')) ? 'flex' : 'none';
+    }
+
+    function goID(k) {
+        cart.k = k; cart.gn = db[k].n;
+        document.getElementById('g-label').innerText = cart.gn;
+        nav('step5');
+    }
+
+    function clearAndBack() {
+        document.getElementById('p-nick').value = "";
+        document.getElementById('p-id').value = "";
+        nav('step4');
+    }
+
+    function confirmID() {
+        cart.nick = document.getElementById('p-nick').value;
+        cart.id = document.getElementById('p-id').value;
+        if(!cart.nick || !cart.id) return alert("أكمل البيانات | Complete info");
+        loadP(); nav('step6');
+    }
+
+    function loadP() {
+        const g = db[cart.k];
+        document.getElementById('p-title').innerText = g.n;
+        const cont = document.getElementById('p-cont');
+        cont.innerHTML = "";
+        g.p.forEach(i => {
+            const d = document.createElement('div');
+            d.className = "price-card shake";
+            d.innerHTML = `${i[0]} ${g.u} <b>${i[1]} ج.م</b>`;
+            d.onclick = () => {
+                cart.q = i[0]; cart.pr = i[1];
+                document.getElementById('f-user').innerText = cart.u;
+                document.getElementById('f-id').innerText = cart.id;
+                nav('step7');
+            };
+            cont.appendChild(d);
+        });
+    }
+
+    function send(num) {
+        const t = `طلب شحن من متجر NIROX 💎\nالعميل: ${cart.u}\nاللعبة: ${cart.gn}\nID: ${cart.id}\nالاسم: ${cart.nick}\nالكمية: ${cart.q}\nالسعر: ${cart.pr} ج.م`;
+        window.open(`https://wa.me/${num}?text=${encodeURIComponent(t)}`);
+    }
+
+    function setStar(n) {
+        cart.stars = n;
+        const stars = document.querySelectorAll('#stars i');
+        stars.forEach((s, i) => s.classList.toggle('active', i < n));
+    }
+
+    function sendRate() {
+        const comment = document.getElementById('rate-text').value;
+        const t = `تقييم متجر NIROX ⭐\nالعميل: ${cart.u}\nالنجوم: ${cart.stars}\nالتعليق: ${comment}`;
+        window.open(`https://wa.me/201223236723?text=${encodeURIComponent(t)}`);
+    }
+</script>
+</body>
+</html>
