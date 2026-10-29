@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار إدارة الجودة الشاملة - المحاضرة الثانية</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1b4332;
+            margin-bottom: 25px;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .question p {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #2d6a4f;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .options li {
+            margin-bottom: 10px;
+        }
+        .options label {
+            display: block;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .options label:hover {
+            background: #e9ecef;
+        }
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #2d6a4f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn-submit:hover {
+            background-color: #1b4332;
+        }
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 6px;
+            display: none;
+        }
+        .correct { background-color: #d4edda; color: #155724; }
+        .incorrect { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>اختبار المحاضرة الثانية: إدارة الجودة الشاملة</h1>
+    <form id="quizForm">
+        <!-- السؤال الأول -->
+        <div class="question">
+            <p>1. أي من المراحل التالية اعتمدت على تطبيق الأساليب الإحصائية (مثل العينات الإحصائية وخرائط الجودة) بناءً على كتاب G.S. Radford عام 1922؟</p>
+            <ul class="options">
+                <li><label><input type="radio" name="q1" value="a"> الفحص (Inspection)</label></li>
+                <li><label><input type="radio" name="q1" value="b"> ضبط الجودة (Quality Control)</label></li>
+                <li><label><input type="radio" name="q1" value="c"> توكيد الجودة (Quality Assurance)</label></li>
+                <li><label><input type="radio" name="q1" value="d"> إدارة الجودة الشاملة (TQM)</label></li>
+            </ul>
+        </div>
+
+        <!-- السؤال الثاني -->
+        <div class="question">
+            <p>2. وفقاً لقيم الإدارة في ثقافة الجودة، يعتبر إرضاء الزبون نتيجة مباشرة لـ:</p>
+            <ul class="options">
+                <li><label><input type="radio" name="q2" value="a"> زيادة عدد مراقبي الإنتاج</label></li>
+                <li><label><input type="radio" name="q2" value="b"> إرضاء العاملين بالمؤسسة وتحفيزهم</label></li>
+                <li><label><input type="radio" name="q2" value="c"> التركيز على الفحص النهائي فقط</label></li>
+                <li><label><input type="radio" name="q2" value="d"> تجريد العمال من الصلاحيات</label></li>
+            </ul>
+        </div>
+
+        <!-- السؤال الثالث -->
+        <div class="question">
+            <p>3. أكد مؤسسو علم الجودة (ديمينغ وكروسبي) أن بناء ثقافة الجودة يعتبر:</p>
+            <ul class="options">
+                <li><label><input type="radio" name="q3" value="a"> خياراً ثانوياً للإدارة العليا</label></li>
+                <li><label><input type="radio" name="q3" value="b"> شرطاً مسبقاً لنجاح المؤسسات في تحسين الجودة</label></li>
+                <li><label><input type="radio" name="q3" value="c"> بديلاً كاملاً للأساليب الفنية والإحصائية</label></li>
+                <li><label><input type="radio" name="q3" value="d"> إجراءً مقتصراً على الصناعات العسكرية</label></li>
+            </ul>
+        </div>
+
+        <!-- السؤال الرابع -->
+        <div class="question">
+            <p>4. تحوّل الحرفيون إلى عمال ومراقبي إنتاج نتيجة لتقسيم العمل والتخصص في أي محور من محاور التطور التاريخي؟</p>
+            <ul class="options">
+                <li><label><input type="radio" name="q4" value="a"> نظام نقابات الكيلد (Guilds)</label></li>
+                <li><label><input type="radio" name="q4" value="b"> النظام الصناعي نتاج الثورة الصناعية</label></li>
+                <li><label><input type="radio" name="q4" value="c"> نظام فريدريك تايلور</label></li>
+                <li><label><input type="radio" name="q4" value="d"> نظام دوائر الجودة اليابانية</label></li>
+            </ul>
+        </div>
+
+        <!-- السؤال الخامس -->
+        <div class="question">
+            <p>5. الحصول على شهادة ISO 9000 أمر مهم للتصدير، ولكنه غير كافٍ وحده دون الاهتمام بـ:</p>
+            <ul class="options">
+                <li><label><input type="radio" name="q5" value="a"> تطوير البنية التحتية الفنية المتعلقة بالقياس والمعايرة والاختبار</label></li>
+                <li><label><input type="radio" name="q5" value="b"> إلغاء جميع فرق العمل الجماعية</label></li>
+                <li><label><input type="radio" name="q5" value="c"> الاعتماد الحصري على التفتيش النهائي</label></li>
+                <li><label><input type="radio" name="q5" value="d"> تقليل مشاركة العاملين في المراحل الأولى</label></li>
+            </ul>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="checkAnswers()">عرض النتيجة</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function checkAnswers() {
+        const answers = { q1: 'b', q2: 'b', q3: 'b', q4: 'b', q5: 'a' };
+        let score = 0;
+        let total = 5;
+
+        for (let q in answers) {
+            let selected = document.querySelector(`input[name="${q}"]:checked`);
+            if (selected && selected.value === answers[q]) {
+                score++;
+            }
+        }
+
+        let resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        resultDiv.className = score >= 3 ? 'correct' : 'incorrect';
+        resultDiv.innerHTML = `حصلت على ${score} من ${total}! (${(score/total)*100}%)`;
+    }
+</script>
+
+</body>
+</html>
